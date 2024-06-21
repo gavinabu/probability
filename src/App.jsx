@@ -1,4 +1,4 @@
-import './App.css'
+import './app.css'
 import PlusIcon from './plus.svg'
 import React, { useEffect, useState } from "react";
 import Pair from './pair'
