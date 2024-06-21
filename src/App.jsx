@@ -63,7 +63,7 @@ function App() {
       }}>{ebtn}</button>
       </div>
       
-      <h4>Combos</h4>
+      <h4>Fragments</h4>
       <div className="pairs">
         {pairs.map((p,index) => (
           <Pair key={index} defaulttype={p[0]} defaultmin={p[1]} defaultmax={p[2]} onUpdate={(type,min,max) => {
