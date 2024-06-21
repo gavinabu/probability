@@ -1,14 +1,11 @@
-import './app.css'
+import './App.css'
 import PlusIcon from './plus.svg'
 import React, { useEffect, useState } from "react";
 import Pair from './pair'
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
 function App() {
   var searchParams = new URLSearchParams(window.location.search)
-  let [pairs,setPairs] = useState(searchParams.has("p") ? JSON.parse(window.atob(searchParams.get("p"))) : [
-    ["number",0,4],
-    ["letter","A","D"]
-  ])
+  let [pairs,setPairs] = useState(searchParams.has("p") ? JSON.parse(window.atob(searchParams.get("p"))) : [])
   function generateRandomList(type,min,max) {
     var returni = []
     if(type == "number") {
@@ -42,6 +39,9 @@ function App() {
   }
   var [combo,setCombo] = useState(generateCombo())
   var [ebtn,setEbtn] = useState("Export")
+  useEffect(() => {
+    setCombo(generateCombo());
+  }, [pairs]);
   return (
     <div className="application">
       <p>Random Combo: {combo}</p>
@@ -70,6 +70,8 @@ function App() {
             p[0] = type
             p[1] = min
             p[2] = max
+          }} remove={() => {
+            setPairs(pairs.filter((_, i) => i !== index));
           }}/>
         ))}
         <button style={{background:"none",border:"none",cursor:"pointer"}} onClick={() => {

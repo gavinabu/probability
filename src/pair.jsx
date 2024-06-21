@@ -24,7 +24,7 @@ export default function Pair(params) {
           }} max="9" barLeftColor="#ccccac" barInnerColor="#337aff" barRightColor="#ccccac"  />
         ) : (
           <>
-            <Slider id="letter" min="0" max="25" labels={letters} label="none" ruler="none" style={{border:"none",boxShadow:"none",padding:"none",width:'150px'}} step="1" minValue="0" onInput={(e) => {
+            <Slider id="letter" min="0" max="25" label="none" ruler="none" style={{border:"none",boxShadow:"none",padding:"none",width:'150px'}} step="1" minValue="0" onInput={(e) => {
               setMin(letters[e.minValue])
               setMax(letters[e.maxValue])
               params.onUpdate(type,letters[e.minValue],letters[e.maxValue])
@@ -32,6 +32,9 @@ export default function Pair(params) {
           </>
         )}
         <p>Selected range: {min} - {max}</p>
+        {/* <button onClick={() => {
+          params.remove()
+        }}>Remove</button> */}
     </div>
   ) 
 }
